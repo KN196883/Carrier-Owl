@@ -1,5 +1,5 @@
 # arxivの学問領域の指定
-subject: 'cat:math.*' OR 'cat:q-fin.*' OR 'cat:stat.*'
+subject: 'cat:math.*' OR 'cat:q-fin.*'
 # 検索キーワード
 keywords:
         kaggle: 1
