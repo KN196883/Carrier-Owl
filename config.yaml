@@ -1,11 +1,13 @@
 # arxivの学問領域の指定
-subject: 'cat:cs.*'
-
+subject: 'cat:math.*' OR 'cat:q-fin.*' OR 'cat:stat.*'
 # 検索キーワード
 keywords:
-        kaggle: 3
-        resnet: 3
-        anomaly detection: 1
+        kaggle: 1
+        trade: 3
+        trading: 3
+        market: 3
+        mathematica: 1
+        
 
 # 通知の閾値
 score_threshold: 0
