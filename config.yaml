@@ -2,18 +2,19 @@
 subject: cat:math.* OR cat:q-fin.*
 # 検索キーワード
 keywords:
-        kaggle: 1
+        Time Series: 3
+        Financial: 3
         trade: 3
         trading: 3
         market: 3
         algorithmic: 3
         quant: 2
         stochastic: 2
-        mathematica: 1
-        maple: 1
         Lattice Gauge: 1
         Lattice: 1
         vertex operator: 1
+        affine: 1
+        Lie: 1
         
 
 # 通知の閾値
