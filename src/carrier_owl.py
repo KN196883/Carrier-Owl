@@ -31,8 +31,7 @@ def calc_score(abst: str, keywords: dict) -> (float, list):
     sum_score = 0.0
     hit_kwd_list = []
 
-    for word in keywords.keys():
-        score = keywords[word]
+    for word, score in keywords.items():
         if word.lower() in abst.lower():
             sum_score += score
             hit_kwd_list.append(word)
@@ -107,14 +106,11 @@ def get_translated_text(from_lang: str, to_lang: str, from_text: str) -> str:
     https://qiita.com/fujino-fpu/items/e94d4ff9e7a5784b2987
     '''
 
-    sleep_time = 1
-
     # urlencode
     from_text = urllib.parse.quote(from_text)
 
     # url作成
-    url = 'https://www.deepl.com/translator#' \
-        + from_lang + '/' + to_lang + '/' + from_text
+    url = f'https://www.deepl.com/translator#{from_lang}/{to_lang}/{from_text}'
 
     # ヘッドレスモードでブラウザを起動
     options = Options()
@@ -125,7 +121,8 @@ def get_translated_text(from_lang: str, to_lang: str, from_text: str) -> str:
     driver.get(url)
     driver.implicitly_wait(10)  # 見つからないときは、10秒まで待つ
 
-    for i in range(30):
+    sleep_time = 1
+    for _ in range(30):
         # 指定時間待つ
         time.sleep(sleep_time)
         html = driver.page_source
@@ -167,7 +164,7 @@ def main():
     keywords = config['keywords']
     score_threshold = float(config['score_threshold'])
 
-    day_before_yesterday = datetime.datetime.today() - datetime.timedelta(days=2)
+    day_before_yesterday = datetime.datetime.now() - datetime.timedelta(days=2)
     day_before_yesterday_str = day_before_yesterday.strftime('%Y%m%d')
     # datetime format YYYYMMDDHHMMSS
     arxiv_query = f'({subject}) AND ' \
